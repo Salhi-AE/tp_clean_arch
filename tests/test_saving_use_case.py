@@ -1,11 +1,20 @@
 from unittest.mock import Mock
-
+import pytest
 from src.saving_use_case import SavingUseCase
 from src.user import User
 from src.user_repository_interface import UserRepositoryInterface
 
 
-def test_saving_user_save_the_user_in_the_repository():
+@pytest.mark.parametrize("user",[User('salhi','abdou')
+                                ,User('ali','ahmed')
+                                ,User('akram','bahi')
+                                ,User('amer','yaser')
+                                ,User('ali','lebahi')
+                                ,User('salh','sarah')
+                                ,User('abd allah','abdou')
+                                ,User('yahya','daga')
+                                ,User('ava','yaman')])
+def test_saving_user_save_the_user_in_the_repository(user):
     # Arrange
     user : User = User('salhi', 'abdou')
     spy_user_repository =Mock(spec =UserRepositoryInterface)
